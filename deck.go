@@ -37,8 +37,7 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
-// need to convert deck into byte slice and save to hd
-// first turn the deck into a string
+// convert deck into byte slice and save to hd
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
@@ -51,8 +50,7 @@ func newDeckFromFile(filename string) deck {
 	bs, err := ioutil.ReadFile(filename)
 
 	if err != nil {
-		// option #1 - log the error and return a call to newDeck()
-		// option #2 - log the error and entirely quit the program
+		// log the error and entirely quit the program
 		fmt.Println("Error:", err)
 		os.Exit(1)
 	}
