@@ -9,7 +9,6 @@ import (
 	"time"
 )
 
-// create a new type of 'deck'
 type deck []string
 
 func newDeck() deck {
@@ -37,7 +36,6 @@ func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
 
-// convert deck into byte slice and save to hd
 func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
@@ -60,13 +58,9 @@ func newDeckFromFile(filename string) deck {
 }
 
 func (d deck) shuffleDeck() {
-	// generate a random seed value
 	source := rand.NewSource(time.Now().UnixNano())
 	r := rand.New(source)
 
-	// loop thru cards
-	// generate a random number between 0 and length of slice
-	// swap the current index with the index of the random number
 	for i := range d {
 		newPosition := r.Intn(len(d) - 1)
 
